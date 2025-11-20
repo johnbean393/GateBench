@@ -1,0 +1,259 @@
+[
+    {
+      "expression": "(A and B) or C",
+      "gate_count": 2
+    },
+    {
+      "expression": "not (A xor B)",
+      "gate_count": 2
+    },
+    {
+      "expression": "(A nand B) and C",
+      "gate_count": 2
+    },
+    {
+      "expression": "A or (not B)",
+      "gate_count": 2
+    },
+    {
+      "expression": "(A nor B) xor C",
+      "gate_count": 2
+    },
+    {
+      "expression": "(not A) nand B",
+      "gate_count": 2
+    },
+    {
+      "expression": "C and (A or B)",
+      "gate_count": 2
+    },
+    {
+      "expression": "(A xor B) nor C",
+      "gate_count": 2
+    },
+    {
+      "expression": "(A nor B) and (not C)",
+      "gate_count": 3
+    },
+    {
+      "expression": "(not A) xor (not B)",
+      "gate_count": 3
+    },
+    {
+      "expression": "((A nand B) or C) xor D",
+      "gate_count": 3
+    },
+    {
+      "expression": "A and (B or (C nor D))",
+      "gate_count": 3
+    },
+    {
+      "expression": "not (not (A and B))",
+      "gate_count": 3
+    },
+    {
+      "expression": "(A xor B) or (C and D)",
+      "gate_count": 3
+    },
+    {
+      "expression": "(A and (B or C)) nor D",
+      "gate_count": 3
+    },
+    {
+      "expression": "(A or B) nand (not C)",
+      "gate_count": 3
+    },
+    {
+      "expression": "not (A and (B or (not (C xor A))))",
+      "gate_count": 5
+    },
+    {
+      "expression": "((A xor B) and (not C)) or (A nor B)",
+      "gate_count": 5
+    },
+    {
+      "expression": "not ((A and B) xor (not (B or C)))",
+      "gate_count": 5
+    },
+    {
+      "expression": "(A nand B) or (C nor (not (A xor B)))",
+      "gate_count": 5
+    },
+    {
+      "expression": "((not A) or B) nand (C and (not B))",
+      "gate_count": 5
+    },
+    {
+      "expression": "(A or B) and (not (B xor (not C)))",
+      "gate_count": 5
+    },
+    {
+      "expression": "(not A) xor ((B nand C) or (A and B))",
+      "gate_count": 5
+    },
+    {
+      "expression": "((A nor B) xor C) and (not (A and B))",
+      "gate_count": 5
+    },
+    {
+      "expression": "((A nand B) or (not C)) xor ((A and B) nor C)",
+      "gate_count": 6
+    },
+    {
+      "expression": "(not (A and B)) xor (C nor (not (B or C)))",
+      "gate_count": 6
+    },
+    {
+      "expression": "not (((A or B) and (B or C)) and (C or A))",
+      "gate_count": 6
+    },
+    {
+      "expression": "((A nand B) or (B nand C)) and (not (A xor C))",
+      "gate_count": 6
+    },
+    {
+      "expression": "not (((not A) and (not B)) and (not C))",
+      "gate_count": 6
+    },
+    {
+      "expression": "(A xor B) and ((B nand C) or (not (A nor C)))",
+      "gate_count": 6
+    },
+    {
+      "expression": "not (((A and B) or (B and C)) or (C and A))",
+      "gate_count": 6
+    },
+    {
+      "expression": "((A xor (not B)) nand (C or A)) xor (not B)",
+      "gate_count": 6
+    },
+    {
+      "expression": "((A or B) nand (B and C)) xor ((C or A) nor (not B))",
+      "gate_count": 7
+    },
+    {
+      "expression": "(not ((A and B) or (C xor A))) and ((not B) nor C)",
+      "gate_count": 7
+    },
+    {
+      "expression": "((A xor B) and (not C)) or ((B nor C) or (not A))",
+      "gate_count": 7
+    },
+    {
+      "expression": "(((not A) nand B) nor C) xor (A and (B or (not C)))",
+      "gate_count": 7
+    },
+    {
+      "expression": "not (((A nand B) or (C nor B)) and (A xor (not C)))",
+      "gate_count": 7
+    },
+    {
+      "expression": "(not (A or B)) and (((A xor B) and C) or (not B))",
+      "gate_count": 7
+    },
+    {
+      "expression": "((not A) or (B and C)) nand ((A nor B) xor (not C))",
+      "gate_count": 7
+    },
+    {
+      "expression": "not (((A or B) and (not C)) xor (A nand (not B)))",
+      "gate_count": 7
+    },
+    {
+      "expression": "((A and (not B)) xor (not C)) nor ((B or C) nand (not A))",
+      "gate_count": 8
+    },
+    {
+      "expression": "not (not ((not A) and B) or (B xor (not (C and A))))",
+      "gate_count": 8
+    },
+    {
+      "expression": "(((not A) xor B) xor C) and (not ((A nand B) nor (not C)))",
+      "gate_count": 8
+    },
+    {
+      "expression": "(not ((A or B) and (not C))) xor (B nand (not (A xor C)))",
+      "gate_count": 8
+    },
+    {
+      "expression": "(((A and B) or C) xor (not A)) and (B nand (not (C nor A)))",
+      "gate_count": 8
+    },
+    {
+      "expression": "((A nand B) or (not A)) xor ((A nor B) and (not (A xor B)))",
+      "gate_count": 8
+    },
+    {
+      "expression": "(not (A xor (not B))) nor (((not C) or A) nand (B and C))",
+      "gate_count": 8
+    },
+    {
+      "expression": "((A and B) nor (not C)) xor ((not A) or (B xor (not C)))",
+      "gate_count": 8
+    },
+    {
+      "expression": "(((not A) and B) xor ((not C) or A)) and (not (B nand (A nor C)))",
+      "gate_count": 9
+    },
+    {
+      "expression": "((not (C and (A or B))) nand ((not A) xor B)) or (not (C xor A))",
+      "gate_count": 9
+    },
+    {
+      "expression": "((not A) and (not (B or C))) xor ((A xor B) nor (not (C and A)))",
+      "gate_count": 9
+    },
+    {
+      "expression": "(not (((not A) or B) xor C)) and (not ((A nand C) or (not B)))",
+      "gate_count": 9
+    },
+    {
+      "expression": "not ((((A xor B) and (B xor C)) or (A nand (not C))) xor (not B))",
+      "gate_count": 9
+    },
+    {
+      "expression": "(not (((not A) nand (B or C)) xor ((A xor C) nor (not B)))) and C",
+      "gate_count": 9
+    },
+    {
+      "expression": "not ((((A and B) or C) nand ((A or B) and C)) xor (not (A xor B)))",
+      "gate_count": 9
+    },
+    {
+      "expression": "not ((((A xor B) and (B xor C)) or ((not A) nand (B nor C))) xor A)",
+      "gate_count": 9
+    },
+    {
+      "expression": "((A xor B) and (not (B or C))) and ((not A) xor (not ((B nand C) or A)))",
+      "gate_count": 10
+    },
+    {
+      "expression": "(((not ((not A) xor B)) and (C or A)) nand (not B)) nor ((A xor C) and B)",
+      "gate_count": 10
+    },
+    {
+      "expression": "not ((((A or B) nor (B and C)) xor ((not A) nand (not C))) and (A xor B))",
+      "gate_count": 10
+    },
+    {
+      "expression": "not ((((A nand B) or (not C)) xor ((B nor A) and (not C))) or (not (A and B)))",
+      "gate_count": 10
+    },
+    {
+      "expression": "not ((C xor (not ((A and (not (C or (not (A xor B))))) nand B))) nor A)",
+      "gate_count": 10
+    },
+    {
+      "expression": "(((not A) and (not B)) nor ((not B) or (not C))) xor (not (A and C))",
+      "gate_count": 10
+    },
+    {
+      "expression": "not (((not (A xor B)) and ((B nand C) or A)) xor ((not A) nand (B or C)))",
+      "gate_count": 10
+    },
+    {
+      "expression": "(((A or B) xor (B and C)) and ((A nand C) nor (not B))) or (not (A xor C))",
+      "gate_count": 10
+    }
+  ]
+  

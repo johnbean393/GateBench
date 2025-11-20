@@ -1,0 +1,4 @@
+openai
+schemdraw
+pyparsing
+numpy<2
