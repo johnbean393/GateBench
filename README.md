@@ -15,6 +15,16 @@ Key capabilities tested:
 
 ![Example Logic Gate Diagram](https://raw.githubusercontent.com/johnbean393/GateBench/main/questions/example.png)
 
+User: 
+> Extract the boolean algebra expression from the image.
+
+> Respond with the single line boolean algebra expression in a code block. Use operators in word form, not symbols. (e.g. "and" instead of "∧")
+
+> Example:
+> ```
+> not ((A and B) xor C)
+> ```
+
 ## Features
 
 - **Challenging Test Suite**: Includes diagrams of varying complexity (different gate counts).
