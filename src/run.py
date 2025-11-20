@@ -36,6 +36,7 @@ def parse_arguments():
     parser.add_argument("--reasoning-effort", choices=["high", "medium", "low"], help="Reasoning effort level for models that support it\n(high, medium, low)")
     parser.add_argument("--reasoning-max-tokens", type=int, help="Maximum number of tokens to use for reasoning\n(Anthropic-style models)")
     parser.add_argument("--max-output-tokens", type=int, help="Maximum number of output tokens for the response")
+    parser.add_argument("--no-auto-update-leaderboard", action="store_true", help="Disable automatic leaderboard updates in README.md")
 
     return parser.parse_args()
 
@@ -54,11 +55,6 @@ def extract_expression(response_text):
             cleaned = match.strip()
             if cleaned:
                 return cleaned
-    
-    # Fallback: if no code block, try to extract something that looks like an expression?
-    # The prompt explicitly asks for a code block.
-    # Let's try to return the text if it's short? No, strict parsing is safer for benchmarks.
-    # But let's return None if not found.
     return None
 
 def run_question(llm, evaluator, question, question_id, image_base_path, cache_dir=None, model_name=None):
@@ -140,27 +136,11 @@ def run_question(llm, evaluator, question, question_id, image_base_path, cache_d
 
 def run_benchmark_for_model(model_name, args, questions, project_root):
     # Determine which API key/endpoint to use
-    # Logic: If OpenRouter specific args are present, use them, else standard.
-    # The help suggests they are separate options. 
-    # But llm.py takes one endpoint/key.
-    
-    # If the user provides --open-router-api-key, we assume they might want to use it for OpenRouter models.
-    # But the script allows passing both.
-    # Simple logic: If --open-router-api-key is provided, prefer it if the endpoint matches default OpenRouter?
-    # Or simply: --api-key is primary.
-    
-    # Re-reading help:
-    # --endpoint ... (default: https://openrouter.ai/api/v1)
-    # --open-router-endpoint ... (default: https://openrouter.ai/api/v1)
-    # It seems redundant unless there's specific logic.
-    # I will use `api_key` if provided, else `open_router_api_key`.
-    # Same for endpoint.
     
     effective_api_key = args.api_key or args.open_router_api_key
     effective_endpoint = args.endpoint
     
-    # If endpoint is default and open-router-endpoint is changed, use that?
-    # Actually, let's just use `args.endpoint` as primary, but if `args.open_router_endpoint` is different from default and `args.endpoint` is default, use `open_router_endpoint`.
+    # If the endpoint is the default OpenRouter endpoint and the open-router-endpoint is different, use the open-router-endpoint.
     if args.endpoint == "https://openrouter.ai/api/v1" and args.open_router_endpoint != "https://openrouter.ai/api/v1":
         effective_endpoint = args.open_router_endpoint
         
@@ -234,6 +214,78 @@ def run_benchmark_for_model(model_name, args, questions, project_root):
     
     return result_entry
 
+def update_leaderboard(readme_path, model_name, score):
+    """Update the leaderboard section in README.md with the new model result."""
+    try:
+        with open(readme_path, 'r') as f:
+            lines = f.readlines()
+        
+        # Find the leaderboard section
+        leaderboard_start = -1
+        table_start = -1
+        table_end = -1
+        
+        for i, line in enumerate(lines):
+            if line.strip() == "## Leaderboard":
+                leaderboard_start = i
+            elif leaderboard_start >= 0 and line.strip().startswith("| Model | Score |"):
+                table_start = i
+            elif table_start >= 0 and line.strip().startswith("|") and not line.strip().startswith("| :"):
+                continue
+            elif table_start >= 0 and not line.strip().startswith("|"):
+                table_end = i
+                break
+        
+        if leaderboard_start < 0 or table_start < 0:
+            print(f"Warning: Could not find leaderboard section in README.md")
+            return
+        
+        # Parse existing entries
+        entries = {}
+        for i in range(table_start + 2, table_end if table_end > 0 else len(lines)):
+            line = lines[i].strip()
+            if line.startswith("|"):
+                parts = [p.strip() for p in line.split("|")]
+                if len(parts) >= 3 and parts[1] and parts[2]:
+                    try:
+                        # Extract model name and score
+                        entry_model = parts[1]
+                        entry_score_str = parts[2].replace("%", "").strip()
+                        entry_score = float(entry_score_str)
+                        entries[entry_model] = entry_score
+                    except (ValueError, IndexError):
+                        continue
+        
+        # Update or add the new model
+        entries[model_name] = score * 100  # Convert to percentage
+        
+        # Sort by score (descending)
+        sorted_entries = sorted(entries.items(), key=lambda x: x[1], reverse=True)
+        
+        # Rebuild the table
+        new_table_lines = [
+            "| Model | Score |\n",
+            "| :--- | ---: |\n"
+        ]
+        
+        for model, score_pct in sorted_entries:
+            new_table_lines.append(f"| {model} | {score_pct:.1f}% |\n")
+        
+        # Replace the old table with the new one
+        if table_end < 0:
+            table_end = len(lines)
+
+        new_lines = lines[:table_start] + new_table_lines + lines[table_end:]
+        
+        # Write back to README
+        with open(readme_path, 'w') as f:
+            f.writelines(new_lines)
+        
+        print(f"Updated leaderboard in README.md")
+        
+    except Exception as e:
+        print(f"Warning: Failed to update leaderboard in README.md: {e}")
+
 def main():
     args = parse_arguments()
     
@@ -275,6 +327,11 @@ def main():
                 json.dump(all_results, f, indent=2)
                 
             print(f"Results for {model} saved. Score: {result['score']:.2%}")
+            
+            # Update leaderboard in README.md unless disabled
+            if not args.no_auto_update_leaderboard:
+                readme_path = os.path.join(project_root, "README.md")
+                update_leaderboard(readme_path, model, result['score'])
 
 if __name__ == "__main__":
     main()

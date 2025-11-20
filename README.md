@@ -2,6 +2,21 @@
 
 GateBench is a challenging benchmark for Vision Language Models (VLMs) designed to test visual reasoning and image understanding capabilities. The benchmark requires VLMs to extract boolean algebra expressions from images of logic gate circuits, using this task as a proxy for assessing detailed image understanding and complex visual reasoning.
 
+## Leaderboard
+
+| Model | Score |
+| :--- | ---: |
+| gemini-3-pro-preview (high) | 53.1% |
+| gpt-5.1 (high) | 40.6% |
+| qwen3-vl-235b-a22b-thinking | 39.0% |
+| qwen3-vl-30b-a3b-thinking | 20.3% |
+| glm-4.5v | 15.6% |
+| llama-4-maverick | 15.6% |
+| claude-sonnet-4.5 | 14.1% |
+| llama-4-scout | 7.8% |
+| claude-haiku-4.5 | 6.2% |
+| grok-4.1-fast | 4.6% |
+
 ## Overview
 
 Unlike benchmarks that focus on single-object recognition (e.g. Name the breed of the dog in the image), GateBench is difficult because it requires the model to reason over the entire image. The model must correctly identify multiple logic gates, trace the connections between them (wires), and understand the logical flow to derive the correct boolean expression.
