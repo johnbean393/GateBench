@@ -9,6 +9,7 @@ GateBench is a challenging benchmark for Vision Language Models (VLMs) designed 
 | gemini-3-pro-preview (high) | 53.1% |
 | gpt-5.1 (high) | 40.6% |
 | qwen3-vl-235b-a22b-thinking | 39.0% |
+| google/gemini-2.5-flash | 32.8% |
 | qwen3-vl-30b-a3b-thinking | 20.3% |
 | glm-4.5v | 15.6% |
 | llama-4-maverick | 15.6% |
