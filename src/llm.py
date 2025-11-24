@@ -47,6 +47,21 @@ class LLM:
         if image_path:
             with open(image_path, "rb") as image_file:
                 base64_image = base64.b64encode(image_file.read()).decode('utf-8')
+            
+            # Detect image format from file extension
+            image_ext = os.path.splitext(image_path)[1].lower()
+            if image_ext == '.png':
+                media_type = 'image/png'
+            elif image_ext in ['.jpg', '.jpeg']:
+                media_type = 'image/jpeg'
+            elif image_ext == '.gif':
+                media_type = 'image/gif'
+            elif image_ext == '.webp':
+                media_type = 'image/webp'
+            else:
+                # Default to png if unknown
+                media_type = 'image/png'
+            
             messages = [
                 {
                     "role": "user",
@@ -55,7 +70,7 @@ class LLM:
                         {
                             "type": "image_url",
                             "image_url": {
-                                "url": f"data:image/jpeg;base64,{base64_image}"
+                                "url": f"data:{media_type};base64,{base64_image}"
                             }
                         }
                     ]
