@@ -14,7 +14,7 @@ GateBench is a challenging benchmark for Vision Language Models (VLMs) designed 
 | glm-4.5v | 15.6% |
 | llama-4-maverick | 15.6% |
 | claude-sonnet-4.5 | 14.1% |
-| anthropic/claude-opus-4.5 | 14.1% |
+| claude-opus-4.5 | 14.1% |
 | llama-4-scout | 7.8% |
 | claude-haiku-4.5 | 6.2% |
 | grok-4.1-fast | 4.6% |
