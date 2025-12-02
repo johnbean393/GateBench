@@ -22,6 +22,7 @@ GateBench is a challenging benchmark for Vision Language Models (VLMs) designed 
 | claude-haiku-4.5 | 6.2% |
 | grok-4.1-fast | 4.6% |
 | claude-sonnet-4.5 (non-thinking) | 3.1% |
+| mistral-large-2512 | 0.0% |
 
 ## Overview
 
