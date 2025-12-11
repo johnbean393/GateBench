@@ -7,6 +7,7 @@ GateBench is a challenging benchmark for Vision Language Models (VLMs) designed 
 | Model | Score |
 | :--- | ---: |
 | gemini-3-pro-preview (high) | 53.1% |
+| gpt-5.2 (xhigh) | 43.8% |
 | gpt-5.1 (high) | 40.6% |
 | qwen3-vl-235b-a22b-thinking | 39.0% |
 | qwen3-vl-235b-a22b-instruct | 32.8% |
@@ -18,6 +19,7 @@ GateBench is a challenging benchmark for Vision Language Models (VLMs) designed 
 | llama-4-maverick | 15.6% |
 | claude-sonnet-4.5 (thinking) | 14.1% |
 | claude-opus-4.5 (thinking) | 14.0% |
+| z-ai/glm-4.5v | 12.5% |
 | nova-2-lite-v1 (thinking) | 9.4% |
 | llama-4-scout | 7.8% |
 | nova-2-lite-v1 (non-thinking) | 6.3% |
